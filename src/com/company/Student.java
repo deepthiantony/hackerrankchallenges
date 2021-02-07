@@ -1,26 +1,35 @@
 package com.company;
 
- public final class Student {
-     private final int rollNo;
+public class Student {
+    private final Long id;
     private final String name;
+    private final Address address;
     private final Age age;
 
-    public Student(int rollNo,String name,Age age) {
-        this.rollNo=rollNo;
-        this.name=name;
-        Age cloneAge=new Age();
-        cloneAge.setDay(age.getDay());
-        cloneAge.setMonth(age.getMonth());
-        cloneAge.setYear(age.getYear());
-        this.age=cloneAge;
+    public Student(Long id, String name, Address address, Age age) {
+        this.id = id;
+        this.name = name;
+        Age age1=new Age();
+        age1.setYear(age.getYear());
+        age1.setDay(age.getDay());
+        age1.setMonth(age.getMonth());
+        this.age=age1;
+        Address cloneAddress=new Address();
+        cloneAddress.setAddress1(address.getAddress1());
+        cloneAddress.setAddress2(address.getAddress2());
+        this.address = cloneAddress;
     }
 
-    public int getRollNo() {
-        return rollNo;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     public Age getAge() {
@@ -29,5 +38,6 @@ package com.company;
         cloneAge.setMonth(this.age.getMonth());
         cloneAge.setYear(this.age.getYear());
         return cloneAge;
+
     }
 }
